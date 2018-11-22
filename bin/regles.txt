@@ -1,0 +1,7 @@
+REGLE R1
+SI socrate est un homme
+ALORS socrate peut être tué
+
+REGLE R2
+SI socrate peut être tué
+ALORS oui
