@@ -1,33 +1,34 @@
 package main;
 
-import loaders.FaitsLoader;
-import loaders.ReglesLoader;
 import regles.Regle;
 
 import java.util.ArrayList;
 
+import exception.IncoherentFactsException;
 import faits.*;
-/**
+/**!
  * Moteur du système
  */
 public class Moteur {
 
 
     /**
-     * Méthode principale qui trace toute la route correspondante en fonction
-     * des faits et des règles
+     * Méthode principale qui trace toute la route correspondante en fonction des
+     * faits et des règles
+     * 
      * @param args
+     * @throws Exception
      */
-    public static void run(String [] args) {
-        ArrayList<Fait> faits = FaitsLoader.getFaitsFromPath("/Users/wibautc/Documents/DA2I/eclipse-workspace/Projet/src/faits.txt");
-       
-
-        ArrayList<Regle> regles = ReglesLoader.getReglesFromPath("/Users/wibautc/Documents/DA2I/eclipse-workspace/Projet/src/regles.txt");
-       
-
-        boolean isOver = false;
+    public static void run(ArrayList<Fait> faits, ArrayList<Regle> regles) throws IncoherentFactsException {
         
+        for (Fait f : faits) {
+            contains(faits, f);
+        }
+        
+        boolean isOver = false;
+
         while(!isOver){
+
             Regle regle = searchCompatibleRule(regles, faits);
             if(regle == null){
                 isOver = true;
@@ -43,10 +44,10 @@ public class Moteur {
         
         for(Regle r : regles){
             boolean contains = true;
-            for(Fait fromrule : r.getPremisses()){
+            for(Fait fromRule : r.getPremisses()){
                 boolean atLeastOne = false;
                 for(Fait fait : faits){
-                    if(fait.getLibelle().equals(fromrule.getLibelle()) && (fait.isTrue() == fromrule.isTrue())) atLeastOne = true;
+                    if(fait.getLibelle().equals(fromRule.getLibelle()) && (fait.isTrue() == fromRule.isTrue())) atLeastOne = true;
                 }
                 if(!atLeastOne) contains =false;
             }
@@ -55,10 +56,14 @@ public class Moteur {
         return null;
     }
 
-    private static boolean contains(ArrayList<Fait> faits, Fait fait){
+    private static boolean contains(ArrayList<Fait> faits, Fait fait) throws IncoherentFactsException {
         for(Fait f : faits){
-            if(f.getLibelle().equals(fait.getLibelle())) return true;
+            if(f.getLibelle().equals(fait.getLibelle())){
+                if(f.isTrue() != fait.isTrue()) throw new IncoherentFactsException("Incohérence dans les faits : " + f + " et " + fait);
+                return true;
+            } 
         }
         return false;
     }
+
 }

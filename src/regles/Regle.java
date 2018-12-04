@@ -66,6 +66,6 @@ public class Regle {
      */
     public String toString(){
         String prem = getPremisses().stream().map(x -> x.toString() ).collect(Collectors.joining(" et "));
-        return getNom() + " : Comme " + prem + " alors " + getConclusion();
+        return (getNom() == null ? "Regle" : getNom()) + " : Comme " + prem + " alors " + getConclusion();
     }
 }
