@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Systeme Expert</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        .divAcc {
+            margin : 5%;
+        }
+        button {
+            margin-bottom: 2%;
+        }
+        #codeinference {
+            display : none;
+        }
+
+        #codechainage {
+            display:none;
+        }
+        body{
+            margin-bottom: 4%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="jumbotron text-center">
+            <h1 class="display-3">Systeme Expert</h1>
+            <p class="lead">Par César Wibaut</p>
+        </div>
+    </div>
+    <div class="container" id="syntax">
+        <h1 class="display-4">Syntaxe</h1>
+        <div class="container center">
+            <div id="syntax" class="row">
+                <div class="col-sm">
+                    <h2>Regles :</h2>
+                    <hr class="my-2">
+                    <p>
+                        REGLE &lt;Nom de la regle&gt;<br>
+                        SI &lt;premisse&gt;<br>
+                        ET &lt;premisse&gt;<br>
+                        ET NON(&lt;premisse&gt;)
+                        ...<br>
+                        ALORS &lt;conclusion&gt;<br>
+                    </p>
+                </div>
+                <div class="col-sm">
+                    <h2>Faits :</h2>
+                    <hr class="my-2">
+                    <p>
+                        &lt;FAIT&gt;<br>
+                        &lt;FAIT&gt;<br>
+                        NON(&lt;FAIT&gt;)<br>
+                        ...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=container>
+        <hr class="my-5 center">
+        <h1 class="display-4">Compiler et lancer</h1>
+        <br>
+        <h2>Depuis la racine du projet</h2>
+        <br>
+        <div class="media">
+            <div class="media-body">
+                <h5>Compiler</h5>
+                <code>$ javac -sourcepath src src/main/App.java</code>
+            </div>
+            <a class="d-flex" href="#">
+                <img src="" alt="">
+            </a>
+        </div>
+        <br>
+        <div class="media">
+            <div class="media-body">
+                <h5>Lancer</h5>
+                <code>$ java -cp bin main.App</code>
+            </div>
+            <a class="d-flex" href="#">
+                <img src="" alt="">
+            </a>
+        </div>
+        <br><br>
+
+    </div>
+    <div class=container>
+
+        <hr class="my-5 center">
+        <h1 class="display-4">Exemples :</h1> <br><br>
+        <div id="accordianId" role="tablist" aria-multiselectable="true">
+            <div class="card">
+                <div class="card-header" role="tab" id="section1HeaderId">
+                    <h5 class="mb-0">
+                        <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true"
+                            aria-controls="section1ContentId">
+                            Moteur d'inférence classique
+                        </a>
+                    </h5>
+                </div>
+                <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+                    <div class="divAcc">
+                        <div class="container center">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <h1 class="text-center">Regles.txt</h1>
+                                    <hr class="my-2">
+                                    <p>
+                                        REGLE Regle 1<br>
+                                        SI le chien bave<br>
+                                        ET le chien cherche à mordre<br>
+                                        ALORS le chien a la rage<br>
+                                        <br>
+
+                                    </p>
+                                </div>
+                                <div class="col-sm">
+                                    <h1 class="text-center">Faits.txt</h1>
+                                    <hr class="my-2">
+                                    <p>
+                                        le chien bave<br>
+                                        le chien cherche à mordre<br>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button onclick="clickInference()" type="button" class="btn btn-info">Run</button>
+                            <br>
+                            <div id="codeinference">
+                                <code>Regle 1 : Comme le chien bave et le chien cherche à mordre alors le chien a la rage</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab" id="section2HeaderId">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" data-parent="#accordianId" href="#section2ContentId"
+                                aria-expanded="true" aria-controls="section2ContentId">
+                                Chaînage arrière
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="section2ContentId" class="collapse in" role="tabpanel" aria-labelledby="section2HeaderId">
+                        <div class="divAcc">
+                            <div class="container center">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h1 class="text-center">Regles.txt</h1>
+                                        <hr class="my-2">
+                                        <p>
+                                            REGLE Regle 1<br>
+                                            SI le chien bave<br>
+                                            ET le chien cherche à mordre<br>
+                                            ALORS le chien a la rage<br>
+                                            <br>
+
+                                        </p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h1 class="text-center">Faits.txt</h1>
+                                        <hr class="my-2">
+                                        <p>
+                                            le chien a la rage
+                                        </p>
+                                    </div>
+                                </div>
+                                <button onclick="clickChainage()"" type=" button" class="btn btn-info">Run</button>
+                                <br>
+                                <div id="codechainage">
+                                    <code>Est ce que le fait "le chien bave" est vrai ?</code>
+                                    <p>y</p>
+                                    <code>Est ce que le fait "le chien cherche à mordre" est vrai ?</code>
+                                    <p>y</p>
+                                    <code>Regle 1 : Comme le chien bave et le chien cherche à mordre alors le chien a la rage</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script>
+        function clickChainage() {
+            document.getElementById("codechainage").style.display = "block";
+        }
+        function clickInference() {
+            document.getElementById("codeinference").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
