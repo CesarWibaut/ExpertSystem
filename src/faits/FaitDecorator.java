@@ -6,19 +6,25 @@ package faits;
  */
 public abstract class FaitDecorator extends Fait{
 
-    /**
-     * Encapsulation du fait original
-     */
-    protected Fait fait;
+    private Fait fait;
 
-    public FaitDecorator(Fait fait){
-        super(fait.getLibelle());
-        this.fait = fait;
+    public FaitDecorator(String libelle){
+        super(libelle);
     }
 
-    public abstract Boolean isTrue();
+    public FaitDecorator(Fait f){
+        super(f.getLibelle());
+        this.fait = f;
+    }
+
+    public boolean isTrue() {
+        if(fait == null){
+            return true;
+        }
+        return fait.isTrue();
+    }
 
     public String toString(){
-        return isTrue() ? "OUI(" + getLibelle() +")" : "NON(" + getLibelle() + ")";
+        return isTrue() ? getLibelle() : "NON(" + getLibelle() + ")";
     }
 }

@@ -37,7 +37,7 @@ public class ChainageArriere {
         Scanner sc = new Scanner(System.in);
         for(Fait f : faits){
             do {
-                System.out.println("Est ce que le fait " + f.getLibelle() + " est vrai ? (y/n)");
+                System.out.println("Est ce que le fait \"" + f.getLibelle() + "\" est vrai ? (y/n)");
                 res = sc.nextLine();
             }while(!res.equals("y")&&!res.equals("n"));
             if(!isSame(res, f)){
@@ -48,8 +48,8 @@ public class ChainageArriere {
     }
 
     private static boolean isSame(String res, Fait f) {
-        if(res.equals("y") && (f.isTrue()==null || f.isTrue())) return true;
-        if(res.equals("n") && f.isTrue()!=null && !f.isTrue()) return true;
+        if(res.equals("y") && f.isTrue()) return true;
+        if(res.equals("n") && !f.isTrue()) return true;
         return false;
     }
 

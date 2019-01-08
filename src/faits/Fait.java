@@ -5,7 +5,7 @@ package faits;
  * La classe qui contient un fait
  * Un fait est une affirmation qui est soit vraie soit fausse
  */
-public class Fait {
+public abstract class Fait {
 
     /**
      * ennoncé du fait
@@ -24,7 +24,10 @@ public class Fait {
         return this.getLibelle();
     }
 
-    public Boolean isTrue() {
-        return null;
+    public abstract boolean isTrue();
+
+    public boolean equals(Object f){
+        Fait cmp = (Fait) f;
+        return libelle.equals(cmp.getLibelle());
     }
 }

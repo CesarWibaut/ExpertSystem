@@ -13,12 +13,12 @@ public class FaitParser {
     public static Fait parseToFait(String x){
         if(x.contains("NON(")) {
             x = x.replace("NON(", "");
-            return new Non(new Fait(x.substring(0,x.length()-1)));
+            return new Non(x.substring(0,x.length()-1));
         }else if(x.contains("OUI(")){
             x = x.replace("OUI(", "");
-            return new Oui(new Fait(x.substring(0,x.length()-1)));
+            return new Oui(x.substring(0,x.length()-1));
         }else {
-            return new Fait(x);
+            return new Oui(x);
         }
     }
 }

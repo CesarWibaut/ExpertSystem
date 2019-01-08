@@ -21,6 +21,8 @@ public class Moteur {
      */
     public static void run(ArrayList<Fait> faits, ArrayList<Regle> regles) throws IncoherentFactsException {
         
+        generateReversedRules(regles);
+
         for (Fait f : faits) {
             contains(faits, f);
         }
@@ -64,6 +66,20 @@ public class Moteur {
             } 
         }
         return false;
+    }
+
+    private static void generateReversedRules(ArrayList<Regle> regles){
+        ArrayList<Regle> add = new ArrayList<Regle>();
+        for(Regle r : regles){
+            if(r.getPremisses().size() == 1){
+                Regle newRule = new Regle();
+                newRule.setNom(r.getNom());
+                newRule.addPremisse(new Non(r.getPremisses().get(0)));
+                newRule.setConclusion(new Non(r.getConclusion()));
+                add.add(newRule);
+            }
+        }
+        regles.addAll(add);
     }
 
 }

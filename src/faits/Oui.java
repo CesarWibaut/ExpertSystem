@@ -5,12 +5,11 @@ package faits;
  */
 public class Oui extends FaitDecorator{
 
-    public Oui(Fait fait){
-        super(fait);
+    public Oui(String libelle){
+        super(libelle);
     }
 
-    @Override
-    public Boolean isTrue() {
+    public boolean isTrue() {
         return true;
     }
 }

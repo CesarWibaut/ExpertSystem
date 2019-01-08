@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <style>
+        .jumbotron {
+            background-color: #cce6ff;
+        }
         .divAcc {
             margin : 5%;
         }
@@ -48,8 +51,8 @@
                         REGLE &lt;Nom de la regle&gt;<br>
                         SI &lt;premisse&gt;<br>
                         ET &lt;premisse&gt;<br>
-                        ET NON(&lt;premisse&gt;)
-                        ...<br>
+                        ET NON(&lt;premisse&gt;)<br>
+                        ET ...<br>
                         ALORS &lt;conclusion&gt;<br>
                     </p>
                 </div>
@@ -75,7 +78,7 @@
         <div class="media">
             <div class="media-body">
                 <h5>Compiler</h5>
-                <code>$ javac -sourcepath src src/main/App.java</code>
+                <code>$ javac -d bin -sourcepath src src/main/App.java</code>
             </div>
             <a class="d-flex" href="#">
                 <img src="" alt="">

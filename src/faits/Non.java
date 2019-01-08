@@ -5,11 +5,16 @@ package faits;
  */
 public class Non extends FaitDecorator{
 
-    public Non(Fait fait) {
+    public Non(String libelle){
+        super(libelle);
+    }
+
+    public Non(Fait fait){
         super(fait);
     }
 
-    public Boolean isTrue() {
-        return false;
+    @Override
+    public boolean isTrue() {
+        return !super.isTrue();
     }
 }
